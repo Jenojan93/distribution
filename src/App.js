@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
+import Navbar from './components/Navbar';
+import Home from './components/home';
+import Edit_distributor from './components/edit_distributor';
+import View_details from './components/view_details';
+import Add_distributor from './components/add_distributor';
+import Sidebar from './components/sidebar';
+import Edit_form from './components/edit_form';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Sidebar />
+        <Routes>
+
+          <Route path='/' element={<Home />} />
+          <Route path='/edit' element={<Edit_distributor />} />
+          <Route path='/view' element={<View_details />} />
+          <Route path='/add' element={<Add_distributor />} />
+          <Route path='/edit_form/:id' element={<Edit_form/>} />
+
+        </Routes>
+      </BrowserRouter>
+
+    </>
   );
 }
 
